@@ -1,8 +1,10 @@
-name: Node.js Package
+name: "CI (Integração contínua) - Primeira action" # Nome da action
 
-on:
-  release:
-    types: [created]
+on: ## Define qual serão os triggers que irão disparar essa action
+  push: ## Evento
+    branches: ["main"] # Objeto do evento: push na branch main
+  pull_request:
+    types: [opened, synchronize]
 
 jobs: # Lista de jobs - uma action pode ter vários jobs
   build: # É um jobd chamado build
