@@ -1,0 +1,15 @@
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs: # Lista de jobs - uma action pode ter vários jobs
+  build: # É um jobd chamado build
+    runs-on: ubuntu-latest # Configuração de qual deve ser o SO que este job vai rodar
+
+    steps: # Cada job pode ter n steps. Steps são etapas a serem executadas sequencialmente
+      - uses: actions/checkout@v4 # copia o código para a máquina
+
+      - name: Primeiro STEP
+        run: echo Hello world!
