@@ -1,0 +1,18 @@
+name: "CI (Integração contínua)" # Nome da action
+
+on: ## Define qual serão os triggers que irão disparar essa action
+  push: ## Evento
+    branches: ["main"] # Objeto do evento: push na branch main
+  pull_request:
+    types: [opened, synchronize]
+
+jobs: # Lista de jobs - uma action pode ter vários jobs
+  test_e2e: # É um jobd chamado build
+    runs-on: ubuntu-latest # Configuração de qual deve ser o SO que este job vai rodar
+
+    steps: # Cada job pode ter n steps. Steps são etapas a serem executadas sequencialmente
+      - uses: actions/checkout@v4 # copia o código para a máquina
+      - name: Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
